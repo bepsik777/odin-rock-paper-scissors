@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const playerScore = 0;
+        const compScore = 0;
+        let computerChoice = getComputerChoice();
+        let playerChoice  
+        let result;
+
+        //Function that choose "rock", "paper" or "scissors" randomly
+        function getComputerChoice() {      
+            const randomNumber = Math.floor(Math.random() * 3 +1)
+            if(randomNumber === 1) {
+                return "rock"
+            } else if(randomNumber === 2) {
+                return "paper"
+            } else {
+                return "scissors"
+            }
+        }
+        console.log(computerChoice);
+
+        //Function that plays one round of the game
+        function playRound(computerChoice, playerChoice) {
+            playerChoice = playerChoice.toLowerCase();
+            if(playerChoice === computerChoice) {
+                return  "It's a tie!";
+            } else if(playerChoice === "rock" && computerChoice === "scissors" || playerChoice === "paper" && computerChoice === "rock" || playerChoice === "scissors" && computerChoice === "paper") {
+                return `You win! ${playerChoice} beats ${computerChoice}!` ;
+                playerChoice++;
+            } else {
+                return `You lose! ${computerChoice} beats ${playerChoice}!`;
+                computerChoice++;
+            }
+        }
+console.log(playRound(computerChoice, "scissors"))
+
+        function game() {
+            for(let i = 0; i < 5; i++){
+
+            }
+        }
+    </script>
+</body>
+</html>
