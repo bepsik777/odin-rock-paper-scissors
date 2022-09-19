@@ -8,11 +8,12 @@
 </head>
 <body>
     <script>
-        const playerScore = 0;
-        const compScore = 0;
+        let playerScore = 0;
+        let computerScore = 0; 
         let computerChoice = getComputerChoice();
         let playerChoice  
-        let result;
+        let finalResult;
+        let roundResult;
 
         //Function that choose "rock", "paper" or "scissors" randomly
         function getComputerChoice() {      
@@ -29,24 +30,50 @@
 
         //Function that plays one round of the game
         function playRound(computerChoice, playerChoice) {
-            playerChoice = playerChoice.toLowerCase();
-            if(playerChoice === computerChoice) {
-                return  "It's a tie!";
+            playerChoice = playerChoice.toLowerCase(); //Makes the player input case insensitive
+            computerChoice = getComputerChoice(); // Use getComputerChoice() function to determine a random computer choice
+            console.log(computerChoice);
+            console.log(playerChoice);
+            console.log(playerScore);
+            console.log(computerScore);
+            if(playerChoice === computerChoice) {  // decide the outcome of one game
+                roundResult =  "It's a tie!";
+                return roundResult;
             } else if(playerChoice === "rock" && computerChoice === "scissors" || playerChoice === "paper" && computerChoice === "rock" || playerChoice === "scissors" && computerChoice === "paper") {
-                return `You win! ${playerChoice} beats ${computerChoice}!` ;
-                playerChoice++;
+                roundResult = `You win! ${playerChoice} beats ${computerChoice}!` ;
+                ++playerScore;
+                return roundResult;
             } else {
-                return `You lose! ${computerChoice} beats ${playerChoice}!`;
-                computerChoice++;
+                roundResult = `You lose! ${computerChoice} beats ${playerChoice}!`;
+                ++computerScore;
+                return roundResult;
             }
         }
-console.log(playRound(computerChoice, "scissors"))
 
         function game() {
-            for(let i = 0; i < 5; i++){
-
-            }
+            for(let i = 0; i < 5; i++){   //create a loop, start at 0, end at 4 (5 rounds)
+                playRound(computerChoice, prompt('choose your weapon. Rock, paper or scissor?'));
+                console.log(roundResult); 
+                console.log(computerScore);
+                console.log(playerScore);
+                computerChoice = '';         
+                playerChoice = '';          
+           }
+           if(playerScore > computerScore) {
+              finaleResult = `You Won! It's ${playerScore} to ${computerScore} in your favour!`;
+              return finalResult;
+           } else if(playerScore < computerScore) {
+              finalResult = `You Loose! It's ${computerScore} to ${playerScore} in computer favour!`;
+              return finalResult;
+           } else {
+              finalResult = `It is a tie! Game Over`;
+              return finalResult;
+           } 
+           console.log(finalResult);
+           playerScore = 0;
+           computerScore = 0;
         }
+         
     </script>
 </body>
 </html>
