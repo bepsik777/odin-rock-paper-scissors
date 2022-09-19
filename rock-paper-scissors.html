@@ -34,8 +34,6 @@
             computerChoice = getComputerChoice(); // Use getComputerChoice() function to determine a random computer choice
             console.log(computerChoice);
             console.log(playerChoice);
-            console.log(playerScore);
-            console.log(computerScore);
             if(playerChoice === computerChoice) {  // decide the outcome of one game
                 roundResult =  "It's a tie!";
                 return roundResult;
@@ -50,7 +48,14 @@
             }
         }
 
+        function resetValues() {
+            playerScore = 0;
+            computerScore = 0;
+        }
+
         function game() {
+            resetValues();
+            finalResult = '';
             for(let i = 0; i < 5; i++){   //create a loop, start at 0, end at 4 (5 rounds)
                 playRound(computerChoice, prompt('choose your weapon. Rock, paper or scissor?'));
                 console.log(roundResult); 
@@ -60,18 +65,15 @@
                 playerChoice = '';          
            }
            if(playerScore > computerScore) {
-              finaleResult = `You Won! It's ${playerScore} to ${computerScore} in your favour!`;
-              return finalResult;
+              finalResult = `You Won! It's ${playerScore} to ${computerScore} in your favour!`;
+              console.log(finalResult);
            } else if(playerScore < computerScore) {
               finalResult = `You Loose! It's ${computerScore} to ${playerScore} in computer favour!`;
-              return finalResult;
+              console.log(finalResult);
            } else {
               finalResult = `It is a tie! Game Over`;
-              return finalResult;
+              console.log(finalResult);
            } 
-           console.log(finalResult);
-           playerScore = 0;
-           computerScore = 0;
         }
          
     </script>
