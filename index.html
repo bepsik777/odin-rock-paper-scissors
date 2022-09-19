@@ -9,7 +9,7 @@
 <body>
     <script>
         let playerScore = 0;
-        let computerScore = 0; 
+        let computerScore = 0;      // i suppose there are too many 'let' variables and not enough 'const', but i am really afraid to use const.
         let computerChoice = getComputerChoice();
         let playerChoice  
         let finalResult;
@@ -41,11 +41,11 @@
                 return roundResult;
             } else if(playerChoice === "rock" && computerChoice === "scissors" || playerChoice === "paper" && computerChoice === "rock" || playerChoice === "scissors" && computerChoice === "paper") {
                 roundResult = `You win! ${playerChoice} beats ${computerChoice}!` ;
-                ++playerScore;
+                ++playerScore;  //increase playerScore
                 return roundResult;
             } else {
                 roundResult = `You lose! ${computerChoice} beats ${playerChoice}!`;
-                ++computerScore;
+                ++computerScore;  //increase computerScore
                 return roundResult;
             }
         }
@@ -56,13 +56,14 @@
         }
 
         function game() {
-            resetValues();
-            finalResult = '';
+            resetValues();                  //reset values of scores.
+            finalResult = '';               //reset the finalResult value so it shows good result after each game
             for(let i = 0; i < 5; i++){   //create a loop, start at 0, end at 4 (5 rounds)
                 playRound(computerChoice, prompt('choose your weapon. Rock, paper or scissor?'));
                 console.log(roundResult); 
                 console.log(computerScore);
                 console.log(playerScore);
+                //reset both 'weapons' after each round
                 computerChoice = '';         
                 playerChoice = '';          
            }
