@@ -5,80 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <script>
-        let playerScore = 0;
-        let computerScore = 0;      // i suppose there are too many 'let' variables and not enough 'const', but i am really afraid to use const.
-        let computerChoice = getComputerChoice();
-        let playerChoice  
-        let finalResult;
-        let roundResult;
-
-        alert('if you want to play, insert "game()" in the developer console.')
-
-        //Function that choose "rock", "paper" or "scissors" randomly
-        function getComputerChoice() {      
-            const randomNumber = Math.floor(Math.random() * 3 +1)
-            if(randomNumber === 1) {
-                return "rock"
-            } else if(randomNumber === 2) {
-                return "paper"
-            } else {
-                return "scissors"
-            }
-        }
-        console.log(computerChoice);
-
-        //Function that plays one round of the game
-        function playRound(computerChoice, playerChoice) {
-            playerChoice = playerChoice.toLowerCase(); //Makes the player input case insensitive
-            computerChoice = getComputerChoice(); // Use getComputerChoice() function to determine a random computer choice
-            console.log(computerChoice);
-            console.log(playerChoice);
-            if(playerChoice === computerChoice) {  // decide the outcome of one game
-                roundResult =  "It's a tie!";
-                return roundResult;
-            } else if(playerChoice === "rock" && computerChoice === "scissors" || playerChoice === "paper" && computerChoice === "rock" || playerChoice === "scissors" && computerChoice === "paper") {
-                roundResult = `You win! ${playerChoice} beats ${computerChoice}!` ;
-                ++playerScore;  //increase playerScore
-                return roundResult;
-            } else {
-                roundResult = `You lose! ${computerChoice} beats ${playerChoice}!`;
-                ++computerScore;  //increase computerScore
-                return roundResult;
-            }
-        }
-
-        function resetValues() {
-            playerScore = 0;
-            computerScore = 0;
-        }
-
-        function game() {
-            resetValues();                  //reset values of scores.
-            finalResult = '';               //reset the finalResult value so it shows good result after each game
-            for(let i = 0; i < 5; i++){   //create a loop, start at 0, end at 4 (5 rounds)
-                playRound(computerChoice, prompt('choose your weapon. Rock, paper or scissor?'));
-                console.log(roundResult); 
-                console.log(computerScore);
-                console.log(playerScore);
-                //reset both 'weapons' after each round
-                computerChoice = '';         
-                playerChoice = '';          
-           }
-           if(playerScore > computerScore) {
-              finalResult = `You Won! It's ${playerScore} to ${computerScore} in your favour!`;
-              console.log(finalResult);
-           } else if(playerScore < computerScore) {
-              finalResult = `You Loose! It's ${computerScore} to ${playerScore} in computer favour!`;
-              console.log(finalResult);
-           } else {
-              finalResult = `It is a tie! Game Over`;
-              console.log(finalResult);
-           } 
-        }
-         
-    </script>
+ 
 </body>
 </html>
